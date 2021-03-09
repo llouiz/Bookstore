@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 Genre = require('./models/genre');
 
@@ -22,6 +24,46 @@ app.get('/api/genres', function (req, res) {
       throw err;
     }
     res.json(genres);
+  });
+});
+
+app.get('/api/genres/:_id', (req, res) => {
+  Genre.getGenre(req.params._id, (err, genre) => {
+    if (err) {
+      throw err;
+    }
+    res.json(genre);
+  });
+});
+
+app.post('/api/genres', (req, res) => {
+  var genre = req.body;
+  Genre.addGenre(genre, (err, genre) => {
+    if (err) {
+      throw err;
+    }
+    res.json(genre);
+  });
+});
+
+app.put('/api/genres/:_id', (req, res) => {
+  var id = req.params._id;
+  genre = req.body;
+  Genre.updateGenre(id, genre, {}, (err, genre) => {
+    if (err) {
+      throw err;
+    }
+    res.json(genre);
+  });
+});
+
+app.delete('/api/genres/:_id', (req, res) => {
+  var id = req.params._id;
+  Genre.removeGenre(id, (err, genre) => {
+    if (err) {
+      throw err;
+    }
+    res.json(genre);
   });
 });
 
