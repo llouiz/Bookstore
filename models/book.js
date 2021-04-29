@@ -26,7 +26,7 @@ const bookSchema = mongoose.Schema({
   image_url: {
     type: String,
   },
-  buy_uri: {
+  buy_url: {
     type: String,
   },
   create_date: {
@@ -63,7 +63,7 @@ module.exports.updateBook = (id, book, options, callback) => {
     publisher: book.publisher,
     pages: book.pages,
     image_url: book.image_url,
-    buy_uri: book.buy_uri,
+    buy_url: book.buy_url,
   };
   Book.findOneAndUpdate(query, update, { upsert: true }, callback);
 };
