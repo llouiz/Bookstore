@@ -9,7 +9,7 @@ Bookstore API using Node, Express with AngularJS
 npm install
 ```
 
-### Executar servidor Node.js (http://localhost:3000)
+### Executar servidor (http://localhost:3000)
 
 ```
 node app
